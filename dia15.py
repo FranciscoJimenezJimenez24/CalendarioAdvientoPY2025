@@ -16,11 +16,11 @@ def draw_table(data: list[dict[str, str | int]], sortBy: str) -> str:
   borderTable = "+"
   for i in range(len(maxLengthColumn)):
     borderTable += "-"*(maxLengthColumn[i] + 2) + "+"
-  
+
   # the header of the table
   header = borderTable + "\n|"
   for i in range(len(maxLengthColumn)):
-    header += " " + chr((i+1) + 64) + " "*(maxLengthColumn[i] - 1) + "|"
+    header += " " + chr((i+1) + 64) + " "*(maxLengthColumn[i]) + "|"
   header += "\n" + borderTable
 
   # the structure of the table
@@ -28,7 +28,7 @@ def draw_table(data: list[dict[str, str | int]], sortBy: str) -> str:
   for i in range(len(dataSorted)):
     table += "|"
     for j, (clave, valor) in enumerate(dataSorted[i].items()):
-      table += " " + valor + " "*(maxLengthColumn[j] - len(valor)) + "|"
+      table += " " + str(valor) + " "*(maxLengthColumn[j] - len(valor) + 1) + "|"
     table += "\n"
   return table + borderTable
   
